@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>员工管理</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h2>这是一个秘密</h2>
+    </div>
+
+    <h3>
+        <p layout:fragment="footer">@2017</p>
+    </h3>
+
+
+
+    <input type="text" th:value="${user.name}">
+
+    <h2>Hello,SpringBoot-!</h2>
+    <h2 th:text="${user.name}"> </h2>
+    <h2 th:text="${user.address}"></h2>
+    <!--获取url中的值-->
+    <h2 th:text="${param.q}">none</h2>
+    <h2 th:if="${user.name == 'lisi'}">Hello,Lisi</h2>
+    <h2 th:unless="${user.name == 'lis'}">Hello,Lisi</h2>
+    <ul th:switch="${user.name}">
+        <li th:case="zhangsan">zhangsan</li>
+        <li th:case="lis">Hello</li>
+        <li th:case="*">bay</li>
+    </ul>
+
+    <div th:replace="footer::copy('chain','北京')"></div>
+    <div th:replace="footer::copy(${user.name},${user.address})"></div>
+    <!--<div th:insert="~{footer::copy}"></div>-->
+    <!--<div th:include="~{footer::copy}"></div>-->
+
+    <!--<div th:replace="footer::copy('kaishengit',2017)"></div>
+    <div th:insert="footer::copy(name=${user.name},year=${user.id})"></div>-->
+
+</body>
+</html>
